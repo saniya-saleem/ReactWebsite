@@ -109,19 +109,18 @@ export default function Navbar() {
   const [expandedMobileCategory, setExpandedMobileCategory] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Handle screen size changes
+ 
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      
-      // Close mobile menu on desktop
+
       if (!mobile) {
         setMobileMenuOpen(false);
         setExpandedMobileCategory(null);
       }
       
-      // Close mega menu on mobile
+
       if (mobile) {
         setShowMega(false);
       }
@@ -143,24 +142,23 @@ export default function Navbar() {
 
   return (
     <div className="relative">
-      {/* Top Bar */}
+
       <div className="bg-teal-600 text-white text-xs sm:text-sm py-2 px-4">
         <div className="text-center">
           <span className="font-medium">Free shipping on any orders</span>
         </div>
       </div>
 
-      {/* Header with Logo and Icons */}
       <div className="bg-white border-b border-gray-200 px-3 sm:px-4 lg:px-6 py-3 sm:py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Language Selector - Hidden on mobile */}
+
           <div className="hidden md:flex items-center space-x-2 cursor-pointer hover:text-teal-600 transition-colors">
             <img src="https://flagcdn.com/w20/gb.png" alt="English" className="w-4 sm:w-5 h-auto" />
             <span className="text-sm">English</span>
             <ChevronDown size={14} className="sm:size-4" />
           </div>
 
-          {/* Mobile Menu Button */}
+          
           <button 
             className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -169,12 +167,11 @@ export default function Navbar() {
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
-          {/* Logo */}
+       
           <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-teal-600 cursor-pointer">
             eqwep
           </div>
 
-          {/* Right Icons */}
           <div className="flex items-center space-x-3 sm:space-x-4 lg:space-x-6">
             <User size={18} className="sm:size-5 lg:size-6 text-gray-600 hover:text-teal-600 cursor-pointer transition-colors" />
             <Heart size={18} className="sm:size-5 lg:size-6 text-gray-600 hover:text-teal-600 cursor-pointer transition-colors" />
@@ -186,7 +183,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-25 z-40 md:hidden"
@@ -194,12 +190,10 @@ export default function Navbar() {
         />
       )}
 
-      {/* Mobile Menu */}
       <div className={`fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transform transition-transform duration-300 z-50 md:hidden ${
         mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         <div className="flex flex-col h-full">
-          {/* Mobile Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
             <div className="text-xl font-bold text-teal-600">eqwep</div>
             <button 
@@ -211,10 +205,8 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Content */}
           <div className="flex-1 overflow-y-auto">
             <div className="p-4">
-              {/* Mobile Search */}
               <div className="flex items-center bg-gray-100 rounded-full px-4 py-3 mb-6">
                 <input
                   type="text"
@@ -224,13 +216,11 @@ export default function Navbar() {
                 <Search size={18} className="text-gray-500" />
               </div>
 
-              {/* Mobile Navigation Items */}
               <div className="space-y-1">
                 <div className="py-3 px-4 font-medium text-gray-800 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors">
                   Bathroom
                 </div>
-                
-                {/* Kitchen with Expandable Menu */}
+        
                 <div className="border border-gray-200 rounded-lg">
                   <button 
                     className="w-full flex items-center justify-between py-3 px-4 font-medium text-gray-800 hover:bg-gray-50 rounded-lg transition-colors"
@@ -279,7 +269,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Footer */}
+       
           <div className="p-4 border-t border-gray-200">
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <img src="https://flagcdn.com/w20/gb.png" alt="English" className="w-4 h-auto" />
@@ -290,7 +280,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Desktop Navigation */}
       <div className="hidden md:block bg-white shadow-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between px-4 lg:px-6 py-3">
@@ -299,7 +288,6 @@ export default function Navbar() {
                 Bathroom <ChevronDown size={14} className="ml-1" />
               </span>
 
-              {/* Kitchen with Mega Menu */}
               <div
                 className="relative"
                 onMouseEnter={() => !isMobile && setShowMega(true)}
@@ -313,7 +301,6 @@ export default function Navbar() {
                   <div className="absolute left-0 top-full w-80 lg:w-[1000px] bg-white shadow-2xl border-t-4 border-teal-600 z-50 animate-slideDown">
                     <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6 lg:py-8">
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-                        {/* Categories Column */}
                         <div className="lg:col-span-3">
                           <h3 className="font-semibold text-gray-900 mb-4 text-base lg:text-lg border-b border-gray-200 pb-2">
                             Categories
@@ -336,8 +323,6 @@ export default function Navbar() {
                             </div>
                           ))}
                         </div>
-
-                        {/* SubItems Column */}
                         <div className="lg:col-span-4">
                           <h3 className="font-semibold text-teal-600 mb-4 text-base lg:text-lg border-b border-gray-200 pb-2">
                             {activeCategory.title}
@@ -359,8 +344,6 @@ export default function Navbar() {
                             ))}
                           </div>
                         </div>
-
-                        {/* Product Preview Column */}
                         <div className="lg:col-span-5 flex items-center justify-center">
                           <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl lg:rounded-2xl p-4 lg:p-6 xl:p-8 w-full max-w-sm lg:max-w-md">
                             <div className="text-center">
@@ -401,8 +384,6 @@ export default function Navbar() {
                 </span>
               ))}
             </div>
-
-            {/* Desktop Search Bar */}
             <div className="flex items-center bg-gray-100 rounded-full px-3 lg:px-4 py-2 w-48 md:w-56 lg:w-80">
               <input
                 type="text"
@@ -414,8 +395,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      {/* Custom Animations */}
       <style>{`
         @keyframes slideDown {
           from { 
